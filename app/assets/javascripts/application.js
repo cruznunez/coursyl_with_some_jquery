@@ -15,26 +15,24 @@
 //= require d3
 //= require_tree .
 
-function onlyOnce() {
+function disableButton() {
   var button = $(event.target);
   button.prop("disabled", "true");
   button.closest("form").submit();
 }
 
-function hideDeletedElement() {
+function hideAndDelete() {
   var container = $(event.target).closest(".association.container");
   container.hide();
-  container.find(".destroy").prop("checked", "true");
+  container.find(".destroy").prop("checked", 1);
 }
 
-function hideAddElement() {
-  lastLink = document.getElementById('last-button');
-  lastLink.parentElement.parentElement.hidden = true;
+function hideLastRow() {
+  $("div.row").last().prop("hidden", 1);
 }
 
-function showAddElement() {
-  lastLink = document.getElementById('last-button');
-  lastLink.parentElement.parentElement.hidden = false;
+function showLastRow() {
+  $("div.row").last().prop("hidden", 0);
 }
 
 function smoothScroll() {
