@@ -1,19 +1,22 @@
-<div id="calendar-modal" class="modal hide fade">
-  <%= form_tag enroll_course_path, method: :post do %>
+<div id="calendar-modal<%= "#{assignment.id}" %>" class="modal hide fade" style="text-align: left !important;">
+  <%= form_for assignment, method: :patch do |f| %>
     <div class="modal-header">
-      <h3>Add a potato to <%= @course.course_code %></h3>
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+      <h3><%= assignment.name %></h3>
     </div>
     <div class="modal-body">
-      <%= hidden_field_tag :id, @course.id %>
-      <span class="field-label"><%= label_tag :email, "Email" %></span>
-      <div class="input-prepend">
-        <span class="add-on">@</span>
-        <%= text_field_tag :email, nil, type: "email", required: true %>
+      <div>
+        <span class="field-label"><%= f.label :active_at, "Start" %></span>
+        <div class="input-prepend"><%= f.text_field :active_at, class: "edit-date-time" %></div>
+      </div>
+      <div>
+        <span class="field-label"><%= f.label :due_at, "Due" %></span>
+        <div class="input-prepend"><%= f.text_field :due_at, class: "edit-date-time" %></div>
       </div>
     </div>
     <div class="modal-footer">
+      <%= submit_tag "Update Assignment", class: "btn btn-success" %>
       <a class="btn" data-dismiss="modal">Close</a>
-      <%= submit_tag "Add Student", class: "btn btn-success" %>
     </div>
   <% end %>
 </div>

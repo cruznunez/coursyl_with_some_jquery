@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require d3
 //= require_tree .
+//= require datetimepicker
 
 function disableButton() {
   var button = $(event.target);
@@ -35,6 +36,19 @@ function showLastRow() {
   $("div.row").last().prop("hidden", 0);
 }
 
+function modal(id, name, start, end) {
+  $('div#calendar-modal form').prop("action", "/assignments/" + id);
+  $('div#calendar-modal div input#id').prop('value', id);
+  $('div#calendar-modal h3').html("Change Open/Due Date for " + name);
+  var start_year = start.slice(0,4);
+  var end_year = end.slice(0,4);
+
+}
+
+function editDateTime() {
+  $('.edit-date-time').datetimepicker();
+}
+
 function smoothScroll() {
   $('#nav a').on("click", function(){
     var navId = $(this).attr("href");
@@ -43,4 +57,6 @@ function smoothScroll() {
   });
 }
 
+$(editDateTime);
 $(smoothScroll);
+$(hideLastRow);

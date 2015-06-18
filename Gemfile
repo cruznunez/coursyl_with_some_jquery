@@ -45,6 +45,10 @@ group :production do
   gem 'rails_12factor' #for heroku logging/compiling
 end
 
+source 'https://rails-assets.org' do
+  gem 'rails-assets-datetimepicker'
+end
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
